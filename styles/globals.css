@@ -10,7 +10,7 @@ html {
 body {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
-  width: 100%;
+  width: 100dvw;
   height: 100%;
   font-family: 'Poppins';
   background: radial-gradient(10.28% 16.20% at 80.78% 34.38%, rgba(0, 231, 190, 0.08) 0%, rgba(0, 231, 190, 0.00) 100%), radial-gradient(14.27% 18.76% at 9.18% 10.79%, rgba(0, 103, 255, 0.08) 0%, rgba(0, 103, 255, 0.00) 100%), #E9EDF2;
@@ -18,7 +18,7 @@ body {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   font-size: calc(60% + 0.8vmin);
-  overflow-y: auto;  /* background: radial-gradient(
+   /* background: radial-gradient(
       20.04% 35.63% at 20.04% 38.89%,
       rgba(0, 103, 255, 0.2) 0%,
       rgba(0, 103, 255, 0) 100%
@@ -50,7 +50,15 @@ a {
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
   grid-gap: 2.25rem;
+  overflow-x: hidden;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 1.25rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 
+
+  }
   @media (max-width: 768px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-gap: 1.25rem;

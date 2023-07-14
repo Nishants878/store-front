@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import Image from "next/image";
-
+// @ts-expect-error
+import ReactStars from "react-rating-stars-component";
 interface ITypeCard {
   title?: string;
   description?: string;
@@ -42,6 +43,13 @@ const Card = ({
           <span>Price: ${price}💵 💵 </span>
           <span>Available:{count} pcs</span>
         </p>
+        <ReactStars
+          count={5}
+          size={24}
+          activeColor="#ffd700"
+          value={rate}
+          isHalf={true}
+        />
       </div>
     </article>
   );
