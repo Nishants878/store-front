@@ -18,17 +18,7 @@ body {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   font-size: calc(60% + 0.8vmin);
-   /* background: radial-gradient(
-      20.04% 35.63% at 20.04% 38.89%,
-      rgba(0, 103, 255, 0.2) 0%,
-      rgba(0, 103, 255, 0) 100%
-    ),
-    radial-gradient(
-      30.97% 15.76% at 93.79% 86.18%,
-      rgba(0, 231, 190, 0.1) 0%,
-      rgba(0, 231, 190, 0) 100%
-    ),
-    #1c232d; */
+
 
 
 }
@@ -67,6 +57,13 @@ a {
 
 
   }
+  @media (max-width: 480px) {
+   
+    padding-left: 0;
+    padding-right:0;
+
+
+  }
 }
 .grid-span-medium {
   grid-column: 2/-2;
@@ -79,15 +76,6 @@ a {
 }
 
 
-.cart-container{
-  width: 100%;
-  /* height: 396px; */
-  padding: 1.25rem;
-  border-radius: 14px;
-  border: 1px solid #FFF;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.10) 100%);
-  box-shadow: 0px 4px 14px 0px rgba(76, 76, 76, 0.05);
-}
 
 
 /* loader css */
@@ -106,59 +94,3 @@ a {
   100% { transform: rotate(360deg); }
 }
 
-
-/* card css */
-
-.card{
-  width: 100%;
-min-height: 120px;
-margin-block: 0.625rem;
-padding-block: 0.625rem;
-display: flex;
-flex-direction: row;
-gap:0.625rem;
-border-radius: 14px;
-border: 1px solid #FFF;
-background: linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.10) 100%);
-box-shadow: 0px 4px 14px 0px rgba(76, 76, 76, 0.05);
-}
-.product-image{
-  flex: .5;
-  padding-left: 2rem;
-}
-.product-info{
-  flex: 2;
-}
-.product-info__title{
-  color: #1C1C1C;
-  font-size: 0.875rem;
-  font-weight: 500;
-line-height: 120%;
-margin-bottom: 0.4rem;
-}
-.product-info__description{
-  color: #7A7A7A;;
- font-size: 0.75rem;
-  font-weight: 400;
-  line-height: 120%;
-  margin-bottom: 3rem;
-  padding-right: 2rem;
-}
-.product-info__price-count{
-  display: flex;
-  /* justify-content: space-between; */
-  gap: 1rem;
-  padding-right: 2rem;
-color: #A2A2A2;
-font-size: 0.75rem;
-line-height: 120%;
-margin-bottom: 0.4rem;
-}
-
-/* //mediaQuery */
-
-/* @media (max-width: 768px) {
-  .product-info__price-count{
-    font-size: 1rem;
-  }
-} */

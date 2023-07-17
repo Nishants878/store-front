@@ -2,6 +2,13 @@ import React, { memo } from "react";
 import Image from "next/image";
 // @ts-expect-error
 import ReactStars from "react-rating-stars-component";
+import loaderImage from "../../../public/next.svg";
+import {
+  CardWrapper,
+  ProductDescriptionWrap,
+  ProductInfoWrap,
+  ProductPriceWrap,
+} from "./Card.style";
 interface ITypeCard {
   title?: string;
   description?: string;
@@ -26,23 +33,24 @@ const Card = ({
   category,
 }: ITypeCard) => {
   return (
-    <article className="card">
+    <CardWrapper>
       <Image
         width={200}
         height={200}
         src={image || ""}
         alt={title || ""}
-        className="product-image"
+        loader={loaderImage}
+        priority
       />
-      <div className="product-info">
+      <ProductInfoWrap>
         <h4 className="product-info__title">
           {title}({category})
         </h4>
-        <p className="product-info__description">{description}</p>
-        <p className="product-info__price-count">
+        <ProductDescriptionWrap>{description}</ProductDescriptionWrap>
+        <ProductPriceWrap>
           <span>Price: ${price}💵 💵 </span>
           <span>Available:{count} pcs</span>
-        </p>
+        </ProductPriceWrap>
         <ReactStars
           count={5}
           size={24}
@@ -50,8 +58,8 @@ const Card = ({
           value={rate}
           isHalf={true}
         />
-      </div>
-    </article>
+      </ProductInfoWrap>
+    </CardWrapper>
   );
 };
 

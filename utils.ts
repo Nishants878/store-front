@@ -1,3 +1,4 @@
+import createCache from '@emotion/cache';
 
 
 //imported from env file
@@ -8,3 +9,10 @@ export const fetchQueries = (query?: any) => {
       .then(response => response.json())
       .then(data => data);
   };
+
+
+const createEmotionCache = () => {
+  return createCache({ key: 'css', prepend: true });
+};
+
+export default createEmotionCache;

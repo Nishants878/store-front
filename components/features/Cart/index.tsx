@@ -1,17 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchQueries } from "@/utils";
 import Loader from "@/components/core-components/loader";
 import Card from "@/components/core-components/card";
-import CartItems from "./CartItems";
+import { CartContainer } from "./Cart.style";
 
 const Cart = () => {
-  const {
-    data: cart,
-    isLoading,
-    refetch,
-    isError: isCartError,
-  } = useQuery({
+  const { data: cart, isError: isCartError } = useQuery({
     queryKey: ["cartList"],
     queryFn: async () => {
       return await fetchQueries("carts/2");
@@ -20,11 +15,7 @@ const Cart = () => {
     refetchIntervalInBackground: true,
   });
 
-  const {
-    data: products,
-    isLoading: isProductsLoading,
-    isError: isProductsError,
-  } = useQuery({
+  const { data: products, isError: isProductsError } = useQuery({
     queryKey: ["productsData"],
     queryFn: async () => {
       if (cart && cart?.products) {
@@ -47,28 +38,24 @@ const Cart = () => {
   }
 
   return (
-    <section className="cart-container">
+    <CartContainer>
       <h1>Cart</h1>
       <hr />
-      {isLoading || isProductsLoading ? (
-        <Loader />
-      ) : (
-        <>
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              image={product.image}
-              rate={product?.rating?.rate}
-              count={product?.rating?.count}
-              category={product.category}
-            />
-          ))}
-        </>
-      )}
-    </section>
+      <Suspense fallback={<Loader />}>
+        {products?.map((product) => (
+          <Card
+            key={product.id}
+            title={product.title}
+            description={product.description}
+            price={product.price}
+            image={product.image}
+            rate={product?.rating?.rate}
+            count={product?.rating?.count}
+            category={product.category}
+          />
+        ))}
+      </Suspense>
+    </CartContainer>
   );
 };
 
